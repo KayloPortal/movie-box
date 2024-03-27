@@ -1,0 +1,52 @@
+.header {
+  padding-block: .9375rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container .hello {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+/* qauery */
+.query-form {
+  padding-right: .625rem;
+  display: grid;
+  grid-template-columns: 1fr 1rem;
+  gap: 1rem;
+  width: min(100%, 32.8125rem);
+  border: 2px solid var(--neutral-100);
+  border-radius: .375rem;
+}
+
+.query-form__input {
+  padding-left: .625rem;
+  padding-block: .625rem;
+  height: 2.25rem;
+}
+
+.query-form__input:focus {
+  outline: 2px solid var(--neutral-100);
+  border-radius: .375rem 0 0 .375rem;
+}
+
+.query-form__input::placeholder {
+  color: inherit;
+}
+
+.query-form__submit {
+  padding-block: .625rem;
+  display: flex;
+  align-items: center;
+}
+
+.query-form__submit-icon {
+  width: 1rem;
+  aspect-ratio: 1;
+}
