@@ -1,0 +1,21 @@
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 0;
+  height: 1.5px;
+  bottom: -.125rem;
+  background-color: var(--neutral-100);
+  opacity: 0;
+  transition: all ease .25s;
+}
+
+.link-underline:not(.active):hover::after {
+  opacity: 1;
+  width: 100%;
+}
