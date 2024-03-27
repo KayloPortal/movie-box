@@ -205,6 +205,7 @@ body {
   font-family: var(--ff-main);
   font-size: var(--fs-300);
   box-sizing: border-box;
+  font-weight: var(--fw-regular);
 }
 
 ul[role="list"] {
