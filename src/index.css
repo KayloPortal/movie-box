@@ -247,3 +247,15 @@ input {
     );
   }
 }
+
+@media(max-width: 64em) {
+  .display-none-tablet {
+    display: none;
+  }
+}
+
+@media(width > 64em) {
+  .display-none-desktop {
+    display: none;
+  }
+}
