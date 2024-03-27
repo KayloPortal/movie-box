@@ -207,11 +207,12 @@ body {
   box-sizing: border-box;
 }
 
-ul[role=list] {
+ul[role="list"] {
   list-style: none;
 }
 
-button, input {
+button,
+input {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -220,7 +221,11 @@ button, input {
 }
 
 .container {
-  width: min(var(--page-layout-width) - 2 * var(--page-inline-padding), 100% - 2 * var(--page-minimum-padding));
+  margin-inline: auto;
+  width: min(
+    calc(var(--page-layout-width) - 2 * var(--page-inline-padding)),
+    calc(100% - 2 * var(--page-minimum-padding))
+  );
 }
 
 .container-full {
@@ -228,8 +233,11 @@ button, input {
   width: calc(100% - 2 * var(--page-inline-padding));
 }
 
-@media(width < 1440px) {
+@media (width < 1440px) {
   .container-full {
-    width: min(var(--page-layout-width) - 2 * var(--page-inline-padding), 100% - 2 * var(--page-minimum-padding));
+    width: min(
+      var(--page-layout-width) - 2 * var(--page-inline-padding),
+      100% - 2 * var(--page-minimum-padding)
+    );
   }
 }
