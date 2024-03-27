@@ -19,7 +19,7 @@ function Header({ displaySearch, bgTransparent }) {
       }}
       className="header | neutral-100"
     >
-      <div className="container">
+      <div className="container header-container">
         <img src={imageLogo} alt="MovieBox" className="header__logo" />
         {displaySearch ? (
           <form action="" className="header-query">
