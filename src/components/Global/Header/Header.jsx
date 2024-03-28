@@ -69,7 +69,7 @@ function Header({ displaySearch, bgTransparent }) {
           false
         )}
         <div className="hello \ ">
-          <Link className=" | fw-bold" to="/">
+          <Link className=" | fw-bold link-underline" to="/">
             Dashboard
           </Link>
           <button className="menu-button" onClick={toggleOpen}>
