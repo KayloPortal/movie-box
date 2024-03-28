@@ -26,13 +26,21 @@ function Header({ displaySearch, bgTransparent }) {
   useGSAP(
     () => {
       console.log("ran");
-      console.log(open)
-      gsap.fromTo(".menu", {x: open ? "0" : "-30rem"}, { x: open ? "-30rem" : "0", duration: .25, display: open? "unset": "none" });
+      console.log(open);
+      gsap.fromTo(
+        ".menu",
+        { x: open ? "0" : "-30rem" },
+        {
+          x: open ? "-30rem" : "0",
+          duration: 0.25,
+          display: open ? "unset" : "none",
+        }
+      );
       gsap.to(".menu-backdrop", {
         opacity: open ? 1 : 0,
         zIndex: open ? 2 : -1,
         // display: open? "unset" : "none",
-        duration: .25
+        duration: 0.25,
       });
     },
     { scope: header, dependencies: [open] }
@@ -49,27 +57,17 @@ function Header({ displaySearch, bgTransparent }) {
       <div className="container header-container">
         <img src={iconLogo} alt="MovieBox" className="header__logo" />
         {displaySearch ? (
-          <form action="" className="query-form">
-            <input
-              type="text"
-              value={query}
-              onChange={({ target }) => handleQuery(target.value)}
-              className="query-form__input"
-              placeholder="What do you want to watch?"
-            />
-            <button className="query-form__submit" type="submit">
-              <img
-                className="query-from__submit-icon"
-                src={iconSearch}
-                alt="submit search"
-              />
-            </button>
-          </form>
+          <HeaderSearch
+            query={query}
+            handleQuery={handleQuery}
+            customClass={"display-none-tablet"}
+            placeholder={"--default"}
+          />
         ) : (
           false
         )}
         <div className="hello \ ">
-          <Link className=" | fw-bold link-underline" to="/">
+          <Link className="hello__link | fw-bold link-underline" to="/">
             Dashboard
           </Link>
           <button className="menu-button" onClick={toggleOpen}>
@@ -77,15 +75,43 @@ function Header({ displaySearch, bgTransparent }) {
           </button>
         </div>
       </div>
-      <MenuModal open={open} toggleOpen={toggleOpen} />
+      <MenuModal open={open} toggleOpen={toggleOpen}>
+        <HeaderSearch
+          query={query}
+          handleQuery={handleQuery}
+          customClass={"display-none-desktop menu-form"}
+          placeholder={"Search"}
+        />
+      </MenuModal>
     </header>
   );
 }
 
-function MenuModal({ toggleOpen }) {
-
+function HeaderSearch({ query, handleQuery, customClass, placeholder }) {
   return (
-    <div className="menu-backdrop" onClick={() => toggleOpen(false)}>
+    <form action="" className={`query-form ${customClass}`}>
+      <input
+        type="text"
+        value={query}
+        onChange={({ target }) => handleQuery(target.value)}
+        className="query-form__input"
+        placeholder={placeholder === "--default" ? "What do you want to watch?" : placeholder}
+      />
+      <button className="query-form__submit" type="submit">
+        <img
+          className="query-from__submit-icon"
+          src={iconSearch}
+          alt="submit search"
+        />
+      </button>
+    </form>
+  );
+}
+
+function MenuModal({ toggleOpen, children }) {
+  return (
+    <>
+      <div className="menu-backdrop" onClick={() => toggleOpen(false)}></div>
       <div className="menu">
         <div className="container menu-container">
           <button className="menu-button" onClick={() => toggleOpen(false)}>
@@ -95,6 +121,7 @@ function MenuModal({ toggleOpen }) {
               alt="close menu"
             />
           </button>
+          {children}
           <nav className="menu-navi">
             <ul className="menu-navi-list" role="list">
               <li className="menu-navi-list__item">
@@ -126,7 +153,7 @@ function MenuModal({ toggleOpen }) {
           </nav>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
