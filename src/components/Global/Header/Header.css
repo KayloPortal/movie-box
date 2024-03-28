@@ -103,10 +103,6 @@ body {
   gap: 2.5rem;
 }
 
-.menu-navi-list__item {
-
-}
-
 .menu-navi__link {
   display: flex;
   align-items: center;
