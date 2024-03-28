@@ -66,6 +66,10 @@
   opacity: 0;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .menu {
   position: absolute;
   top: 0;
@@ -77,9 +81,11 @@
   --page-inline-padding: 5rem;
   width: var(--page-layout-width);
   padding-top: 1.375rem;
-  height: 100dvh;
+  height: 100vh;
   /* gsap animating */
-  right: calc(-1 * var(--page-layout-width));
+  /* right: calc(-1 * var(--page-layout-width)); */
+  /* transform: translateX(30rem); */
+  right: -30rem;
 }
 
 .menu-button {
