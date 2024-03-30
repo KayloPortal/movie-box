@@ -71,7 +71,7 @@ function HeroSlide({movie}) {
             alt="Rotten-Tomatoes rate"
             style={{ marginLeft: "2.125rem" }}
           />{" "}
-          {movie["rate-tomato"]}%
+          {movie["rate-Tomato"]}%
         </p>
         <p className="hero-slide__desc | fs-200 fl-height-400 fw-medium">
           {movie.description}
