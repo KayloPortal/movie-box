@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import "./Header.css";
 import iconLogo from "/icons/logo.svg";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import iconMenu from "/icons/menu.svg";
 import iconSearch from "/icons/search.svg";
 import iconMenuClose from "/icons/menu-close.svg";
@@ -25,8 +25,6 @@ function Header({ displaySearch, bgTransparent }) {
   const header = useRef();
   useGSAP(
     () => {
-      console.log("ran");
-      console.log(open);
       gsap.fromTo(
         ".menu",
         { x: open ? "0" : "-30rem" },
@@ -67,9 +65,9 @@ function Header({ displaySearch, bgTransparent }) {
           false
         )}
         <div className="hello \ ">
-          <Link className="hello__link | fw-bold link-underline" to="/">
+          <NavLink className="hello__link | fw-bold link-underline" to="/dashboard">
             Dashboard
-          </Link>
+          </NavLink>
           <button className="menu-button" onClick={toggleOpen}>
             <img className="menu-button__icon" src={iconMenu} alt="open menu" />
           </button>
@@ -95,7 +93,11 @@ function HeaderSearch({ query, handleQuery, customClass, placeholder }) {
         value={query}
         onChange={({ target }) => handleQuery(target.value)}
         className="query-form__input"
-        placeholder={placeholder === "--default" ? "What do you want to watch?" : placeholder}
+        placeholder={
+          placeholder === "--default"
+            ? "What do you want to watch?"
+            : placeholder
+        }
       />
       <button className="query-form__submit" type="submit">
         <img

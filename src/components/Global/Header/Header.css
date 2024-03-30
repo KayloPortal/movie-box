@@ -131,6 +131,10 @@ body {
   width: 100%;
 }
 
+.hello__link.active {
+  color: var(--rose-700);
+}
+
 @media (max-width: 35em) {
   .hello__link {
     display: none;
