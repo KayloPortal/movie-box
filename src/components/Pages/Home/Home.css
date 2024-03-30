@@ -1,6 +1,26 @@
+.hero-slider {
+  --slide-value: min(100dvh, 37.5rem);
+  width: 100%;
+  height: var(--slide-value);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-slides {
+  position: absolute;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  /* transform: translateY(calc(2 * var(--slide-value))); */
+}
+
 .hero-slide {
   width: 100%;
-  height: min(100dvh, 37.5rem);
+  height: var(--slide-value);
   /* background-color: var(--neutral-950); */
   background-repeat: no-repeat;
   padding-top: 4.875rem;
@@ -45,4 +65,5 @@
   padding: 0.375rem 1rem;
   border-radius: .375rem;
   background-color: var(--rose-700);
+  cursor: pointer;
 }

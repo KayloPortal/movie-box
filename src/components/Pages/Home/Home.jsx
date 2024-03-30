@@ -6,6 +6,7 @@ import iconPlaySolid from "/icons/play-solid.svg";
 import imageJohnWick3 from "/images/banner-johnwick3.jpg";
 import imageDankirk from "/images/banner-dankirk.jpg";
 import imageFury from "/images/banner-fury.jpg";
+import { useState } from "react";
 
 function Home() {
   return <Hero />;
@@ -19,7 +20,7 @@ const heroMovies = [
     "image-url": imageJohnWick3,
     "rate-IMDb": "8.6",
     "rate-Tomato": "97",
-    id: "yf7834gd8634gd"
+    id: "yf7834gd8634gd",
   },
   {
     title: "Dankirk",
@@ -28,7 +29,7 @@ const heroMovies = [
     "image-url": imageDankirk,
     "rate-IMDb": "7.8",
     "rate-Tomato": "94",
-    id: "yf7834gdg73486"
+    id: "yf7834gdg73486",
   },
   {
     title: "Fury",
@@ -37,27 +38,40 @@ const heroMovies = [
     "image-url": imageFury,
     "rate-IMDb": "7.6",
     "rate-Tomato": "76",
-    id: "yf7834gdg734gd"
+    id: "yf7834gdg734gd",
   },
 ];
 
 function Hero() {
+  const [index, setIndex] = useState(0)
+
+  function handleIndex(newIndex) {
+    setIndex(newIndex)
+  }
+
   return (
     <section className="hero-section">
       <h1 className="visually-hidden">Free Movie And Drama Website</h1>
       <div className="hero-slider">
         <h2 className="visually-hidden">Most Popular Movies</h2>
-        {heroMovies.map((data) => <HeroSlide key={data.id} movie={data} />)}
+        <div className="hero-slides" style={{transform: `translateY(calc(-${index} * var(--slide-value)))`}}>
+          {heroMovies.map((data) => (
+            <HeroSlide key={data.id} movie={data} />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function HeroSlide({movie}) {
+function HeroSlide({ movie }) {
   return (
     <div
       className="hero-slide | neutral-100"
-      style={{ background: `url(${movie["image-url"]}) no-repeat center`, backgroundSize: "cover"}}
+      style={{
+        background: `url(${movie["image-url"]}) no-repeat center`,
+        backgroundSize: "cover",
+      }}
     >
       <div className="hero-slide__bg"></div>
       <div className="container hero-slide-container">
@@ -65,7 +79,8 @@ function HeroSlide({movie}) {
           {movie.title}
         </h3>
         <p className="hero-slide__rates">
-          <img src={iconIMDB} alt="IMDb rate" /> {movie["rate-IMDb"] * 10}.0 / 100{" "}
+          <img src={iconIMDB} alt="IMDb rate" /> {movie["rate-IMDb"] * 10}.0 /
+          100{" "}
           <img
             src={iconTomato}
             alt="Rotten-Tomatoes rate"
