@@ -15,7 +15,38 @@
   left: 0;
   right: 0;
   top: 0;
+  transition: all ease-in-out .25s;
   /* transform: translateY(calc(2 * var(--slide-value))); */
+}
+
+.hero-navigators {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .625rem;
+  position: absolute;
+  z-index: 3;
+  right: 1.5rem;
+  top: 0;
+  bottom: 0;
+  align-items: end;
+}
+
+.hero-navigator {
+  cursor: pointer;
+  transition: all ease-in-out .25s;
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+}
+
+.hero-navigator__line {
+  display: flex;
+  height: .1875rem;
+  width: 1.25rem;
+  background-color: var(--neutral-100);
+  border-radius: .375rem;
+  transition: opacity ease-in-out .25s;
 }
 
 .hero-slide {

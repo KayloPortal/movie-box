@@ -43,10 +43,10 @@ const heroMovies = [
 ];
 
 function Hero() {
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
 
   function handleIndex(newIndex) {
-    setIndex(newIndex)
+    setIndex(newIndex);
   }
 
   return (
@@ -54,9 +54,28 @@ function Hero() {
       <h1 className="visually-hidden">Free Movie And Drama Website</h1>
       <div className="hero-slider">
         <h2 className="visually-hidden">Most Popular Movies</h2>
-        <div className="hero-slides" style={{transform: `translateY(calc(-${index} * var(--slide-value)))`}}>
+        <div
+          className="hero-slides"
+          style={{
+            transform: `translateY(calc(-${index} * var(--slide-value)))`,
+          }}
+        >
           {heroMovies.map((data) => (
             <HeroSlide key={data.id} movie={data} />
+          ))}
+        </div>
+        <div className="hero-navigators">
+          {heroMovies.map((item, itemIndex) => (
+            <button
+              key={itemIndex + 1}
+              onClick={() => handleIndex(itemIndex)}
+              className={`hero-navigator | ${
+                index === itemIndex ? "neutral-100" : "gray-400"
+              } fw-bold fs-${index === itemIndex ? "3" : "1"}00 fl-height-200`}
+            >
+              <span style={{opacity: index == itemIndex? 1 : 0}} className="hero-navigator__line"></span>
+              {itemIndex + 1}
+            </button>
           ))}
         </div>
       </div>
