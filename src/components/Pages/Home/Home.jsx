@@ -6,10 +6,17 @@ import iconPlaySolid from "/icons/play-solid.svg";
 import imageJohnWick3 from "/images/banner-johnwick3.jpg";
 import imageDankirk from "/images/banner-dankirk.jpg";
 import imageFury from "/images/banner-fury.jpg";
+import iconChevRight from "/icons/chevron-right.svg";
 import { useState } from "react";
+import MovieCard from "../../Global/MovieCard/MovieCard";
 
 function Home() {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <FeaturedMovies />
+    </>
+  );
 }
 
 const heroMovies = [
@@ -73,7 +80,10 @@ function Hero() {
                 index === itemIndex ? "neutral-100" : "gray-400"
               } fw-bold fs-${index === itemIndex ? "3" : "1"}00 fl-height-200`}
             >
-              <span style={{opacity: index == itemIndex? 1 : 0}} className="hero-navigator__line"></span>
+              <span
+                style={{ opacity: index == itemIndex ? 1 : 0 }}
+                className="hero-navigator__line"
+              ></span>
               {itemIndex + 1}
             </button>
           ))}
@@ -116,6 +126,25 @@ function HeroSlide({ movie }) {
         </button>
       </div>
     </div>
+  );
+}
+
+function FeaturedMovies() {
+  return (
+    <section>
+      <div className="container">
+        <div className="bar">
+          <h2 className="bar__heading">Featured Movie</h2>
+          <a className="bar__link" href="">
+            <span className="bar__link-text">See more</span>{" "}
+            <img className="bar__link-icon" src={iconChevRight} alt="" />
+          </a>
+        </div>
+        <div className="movie-cards">
+          <MovieCard />
+        </div>
+      </div>
+    </section>
   );
 }
 
