@@ -100,3 +100,33 @@
 }
 
 /* Featured Styles */
+
+.movies {
+  padding-top: 4.375rem;
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.75rem;
+}
+
+.bar__link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bar__link-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  object-fit: contain;
+  stroke: var(--rose-700);
+  /* fill: black; */
+}
+
+.movie-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

@@ -7,6 +7,7 @@ import imageJohnWick3 from "/images/banner-johnwick3.jpg";
 import imageDankirk from "/images/banner-dankirk.jpg";
 import imageFury from "/images/banner-fury.jpg";
 import iconChevRight from "/icons/chevron-right.svg";
+import spriteChevRight from "/icons/__all-sprites.svg";
 import { useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
 
@@ -131,17 +132,20 @@ function HeroSlide({ movie }) {
 
 function FeaturedMovies() {
   return (
-    <section>
-      <div className="container">
+    <section className="movies">
+      <div className="container-full movies-container">
         <div className="bar">
-          <h2 className="bar__heading">Featured Movie</h2>
-          <a className="bar__link" href="">
-            <span className="bar__link-text">See more</span>{" "}
-            <img className="bar__link-icon" src={iconChevRight} alt="" />
+          <h2 className="bar__heading | fw-bold fs-650">Featured Movie</h2>
+          <a className="bar__link | link-underline" href="">
+            <span className="bar__link-text | fs-400 fl-height-600 rose-700">See more</span>{" "}
+            {/* <img className="bar__link-icon" src={iconChevRight} alt="" /> */}
+            <svg className="bar__link-icon"><use xlinkHref={spriteChevRight + "#chevron-right"}></use></svg>
           </a>
         </div>
-        <div className="movie-cards">
-          <MovieCard />
+        <div className="movie-slider">
+          <div className="movie-cards">
+            <MovieCard />
+          </div>
         </div>
       </div>
     </section>
