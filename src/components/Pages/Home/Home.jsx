@@ -6,7 +6,8 @@ import iconPlaySolid from "/icons/play-solid.svg";
 import imageJohnWick3 from "/images/banner-johnwick3.jpg";
 import imageDankirk from "/images/banner-dankirk.jpg";
 import imageFury from "/images/banner-fury.jpg";
-import iconChevRight from "/icons/chevron-right.svg";
+import imageBatman from "/images/poster-batman.jpg"
+import imageSpiderman from "/images/poster-spiderman.jpg"
 import spriteChevRight from "/icons/__all-sprites.svg";
 import { useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
@@ -130,6 +131,45 @@ function HeroSlide({ movie }) {
   );
 }
 
+const featuredMovies = [
+  {
+    title: "Stranger Things",
+    "image-url": imageBatman,
+    "rate-IMDb": "8.6",
+    "rate-Tomato": "97",
+    id: "yf7834gd8634gd",
+    year: "2016",
+    country: "USA",
+    "tv-series": "yes",
+    genres: ["Action", "Adventure", "Horror"],
+    current: "yes"
+  },
+  {
+    title: "Batman Begins",
+    "image-url": imageBatman,
+    "rate-IMDb": "8.2",
+    "rate-Tomato": "70",
+    id: "yf7834sdasdad8634gd",
+    year: "2005",
+    country: "",
+    "tv-series": "no",
+    genres: ["Action", "Adventure", "Horror"],
+    current: "no"
+  },
+  {
+    title: "Spider-Man : Into The Spider Verse",
+    "image-url": imageSpiderman,
+    "rate-IMDb": "8.4",
+    "rate-Tomato": "87",
+    id: "yf7834gdsadd8634gd",
+    year: "2018",
+    country: "",
+    "tv-series": "no",
+    genres: ["Action", "Adventure", "Horror"],
+    current: "no"
+  },
+];
+
 function FeaturedMovies() {
   return (
     <section className="movies">
@@ -137,20 +177,20 @@ function FeaturedMovies() {
         <div className="bar">
           <h2 className="bar__heading | fw-bold fs-650">Featured Movie</h2>
           <a className="bar__link | link-underline" href="">
-            <span className="bar__link-text | fs-400 fl-height-600 rose-700">See more</span>{" "}
-            {/* <img className="bar__link-icon" src={iconChevRight} alt="" /> */}
-            <svg className="bar__link-icon"><use xlinkHref={spriteChevRight + "#chevron-right"}></use></svg>
+            <span className="bar__link-text | fs-400 fl-height-600 rose-700">
+              See more
+            </span>{" "}
+            <svg className="bar__link-icon">
+              <use xlinkHref={spriteChevRight + "#chevron-right"}></use>
+            </svg>
           </a>
         </div>
         <div className="movie-slider">
-        <MovieCard customClass="movie-card-holder" />
+          <MovieCard movie={featuredMovies[0]} customClass="movie-card-holder" />
           <div className="movie-cards">
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
+            {featuredMovies.map((data) => (
+              <MovieCard key={data.id} movie={data} customClass={""} />
+            ))}
           </div>
         </div>
       </div>
