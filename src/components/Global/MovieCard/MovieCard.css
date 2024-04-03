@@ -1,0 +1,48 @@
+.movie-card {
+  position: relative;
+}
+
+.movie-card__date,
+.movie-card__rates {
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+}
+
+.movie-card__rates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-card__rates span {
+  display: flex;
+  gap: .625rem;
+  align-items: center;
+}
+
+.movie-card-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-card-bar__favorite {
+  width: 1.875rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: .3125rem;
+}
+
+.movie-card-bar__favorite-icon {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  fill: var(--gray-300);
+}
+
+.movie-card__poster {
+  width: 100%;
+}

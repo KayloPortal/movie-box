@@ -32,7 +32,8 @@
   /* Colors */
   --neutral-100: rgb(255, 255, 255);
   --neutral-175: rgba(255, 255, 255, 0.75);
-  --neutral-200: hsla(220, 14%, 96%, 0.5); /* #F3F4F6 */
+  --neutral-200: hsla(220, 14%, 96%, 1); /* #F3F4F6 */
+  --neutral-250: hsla(220, 14%, 96%, 0.5);
   --neutral-800: hsla(0, 0%, 10%, 1);
   --neutral-900: rgb(0, 0, 0);
   --neutral-975: rgba(0, 0, 0, 0.75);
@@ -168,6 +169,14 @@
 
 .neutral-100 {
   color: var(--neutral-100);
+}
+
+.neutral-200 {
+  color: var(--neutral-200);
+}
+
+.neutral-250 {
+  color: var(--neutral-250);
 }
 
 .neutral-175 {

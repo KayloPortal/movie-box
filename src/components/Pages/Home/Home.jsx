@@ -143,7 +143,13 @@ function FeaturedMovies() {
           </a>
         </div>
         <div className="movie-slider">
+        <MovieCard customClass="movie-card-holder" />
           <div className="movie-cards">
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
+            <MovieCard />
             <MovieCard />
           </div>
         </div>
