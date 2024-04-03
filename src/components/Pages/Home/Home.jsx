@@ -5,9 +5,13 @@ import iconTomato from "/icons/tomato.svg";
 import iconPlaySolid from "/icons/play-solid.svg";
 import imageJohnWick3 from "/images/banner-johnwick3.jpg";
 import imageDankirk from "/images/banner-dankirk.jpg";
+
 import imageFury from "/images/banner-fury.jpg";
 import imageBatman from "/images/poster-batman.jpg"
 import imageSpiderman from "/images/poster-spiderman.jpg"
+import imageStrangerthings from "/images/poster-strangerthings.jpg"
+import posterDankirk from "/images/poster-dankirk.jpg"
+
 import spriteChevRight from "/icons/__all-sprites.svg";
 import { useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
@@ -134,14 +138,14 @@ function HeroSlide({ movie }) {
 const featuredMovies = [
   {
     title: "Stranger Things",
-    "image-url": imageBatman,
+    "image-url": imageStrangerthings,
     "rate-IMDb": "8.6",
     "rate-Tomato": "97",
     id: "yf7834gd8634gd",
     year: "2016",
     country: "USA",
     "tv-series": "yes",
-    genres: ["Action", "Adventure", "Horror"],
+    genres: ["Action", "Adventure"],
     current: "yes"
   },
   {
@@ -151,7 +155,7 @@ const featuredMovies = [
     "rate-Tomato": "70",
     id: "yf7834sdasdad8634gd",
     year: "2005",
-    country: "",
+    country: "USA",
     "tv-series": "no",
     genres: ["Action", "Adventure", "Horror"],
     current: "no"
@@ -163,9 +167,33 @@ const featuredMovies = [
     "rate-Tomato": "87",
     id: "yf7834gdsadd8634gd",
     year: "2018",
-    country: "",
+    country: "USA",
     "tv-series": "no",
-    genres: ["Action", "Adventure", "Horror"],
+    genres: ["Animation", "Action", "Adventure"],
+    current: "no"
+  },
+  {
+    title: "Dankirk",
+    "image-url": posterDankirk,
+    "rate-IMDb": "7.8",
+    "rate-Tomato": "94",
+    id: "yf7834gdsdsdadd8634gd",
+    year: "2017",
+    country: "USA",
+    "tv-series": "no",
+    genres: ["Animation", "Drama", "History"],
+    current: "no"
+  },
+  {
+    title: "Dankirk",
+    "image-url": posterDankirk,
+    "rate-IMDb": "7.8",
+    "rate-Tomato": "94",
+    id: "yf7834gdddsdsdadd8634gd",
+    year: "2017",
+    country: "USA",
+    "tv-series": "no",
+    genres: ["Animation", "Drama", "History"],
     current: "no"
   },
 ];
