@@ -3,16 +3,19 @@ import "./Home.css";
 import iconIMDB from "/icons/imdb.svg";
 import iconTomato from "/icons/tomato.svg";
 import iconPlaySolid from "/icons/play-solid.svg";
+import iconChevronRight from "/icons/chevron-right.svg";
+import iconChevronLeft from "/icons/chevron-left.svg";
+
 import imageJohnWick3 from "/images/banner-johnwick3.jpg";
 import imageDankirk from "/images/banner-dankirk.jpg";
-
 import imageFury from "/images/banner-fury.jpg";
-import imageBatman from "/images/poster-batman.jpg"
-import imageSpiderman from "/images/poster-spiderman.jpg"
-import imageStrangerthings from "/images/poster-strangerthings.jpg"
-import posterDankirk from "/images/poster-dankirk.jpg"
 
-import spriteChevRight from "/icons/__all-sprites.svg";
+import imageBatman from "/images/poster-batman.jpg";
+import imageSpiderman from "/images/poster-spiderman.jpg";
+import imageStrangerthings from "/images/poster-strangerthings.jpg";
+import posterDankirk from "/images/poster-dankirk.jpg";
+
+import sprites from "/icons/__all-sprites.svg";
 import { useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
 
@@ -146,7 +149,7 @@ const featuredMovies = [
     country: "USA",
     "tv-series": "yes",
     genres: ["Action", "Adventure"],
-    current: "yes"
+    current: "yes",
   },
   {
     title: "Batman Begins",
@@ -158,7 +161,7 @@ const featuredMovies = [
     country: "USA",
     "tv-series": "no",
     genres: ["Action", "Adventure", "Horror"],
-    current: "no"
+    current: "no",
   },
   {
     title: "Spider-Man : Into The Spider Verse",
@@ -170,7 +173,7 @@ const featuredMovies = [
     country: "USA",
     "tv-series": "no",
     genres: ["Animation", "Action", "Adventure"],
-    current: "no"
+    current: "no",
   },
   {
     title: "Dankirk",
@@ -182,7 +185,7 @@ const featuredMovies = [
     country: "USA",
     "tv-series": "no",
     genres: ["Animation", "Drama", "History"],
-    current: "no"
+    current: "no",
   },
   {
     title: "Dankirk",
@@ -194,11 +197,38 @@ const featuredMovies = [
     country: "USA",
     "tv-series": "no",
     genres: ["Animation", "Drama", "History"],
-    current: "no"
+    current: "no",
+  },
+  {
+    title: "Dankirk",
+    "image-url": posterDankirk,
+    "rate-IMDb": "7.8",
+    "rate-Tomato": "94",
+    id: "yf7834gdddsdsdadsadd8634gd",
+    year: "2017",
+    country: "USA",
+    "tv-series": "no",
+    genres: ["Animation", "Drama", "History"],
+    current: "no",
   },
 ];
 
 function FeaturedMovies() {
+  const [sliderIndex, setSliderIndex] = useState(0);
+
+  const handleSlide = (method) => {
+    if (method !== "inc" && method !== "dec")
+      throw "handleSlide method argument must be 'inc' or 'dec'";
+    setSliderIndex((prevIndex) => {
+      if (
+        (prevIndex == 0 && method == "dec") ||
+        (prevIndex == featuredMovies.length - 4 && method == "inc")
+      )
+        return prevIndex;
+      return prevIndex + (method === "inc" ? 1 : -1);
+    });
+  };
+
   return (
     <section className="movies">
       <div className="container-full movies-container">
@@ -209,17 +239,52 @@ function FeaturedMovies() {
               See more
             </span>{" "}
             <svg className="bar__link-icon">
-              <use xlinkHref={spriteChevRight + "#chevron-right"}></use>
+              <use xlinkHref={sprites + "#chevron-right"}></use>
             </svg>
           </a>
         </div>
         <div className="movie-slider">
-          <MovieCard movie={featuredMovies[0]} customClass="movie-card-holder" />
-          <div className="movie-cards">
+          <MovieCard
+            movie={featuredMovies[0]}
+            customClass="movie-card-holder"
+          />
+          <div
+            className="movie-cards"
+            style={{
+              transform: `translateX(${
+                sliderIndex * (-1 * (15.625 + 5))
+                // (sliderIndex === featuredMovies.length - 4 ? 5 : 0)
+              }rem)`,
+            }}
+          >
             {featuredMovies.map((data) => (
               <MovieCard key={data.id} movie={data} customClass={""} />
             ))}
           </div>
+        </div>
+        <div className="movie-navigators">
+          <button
+            className="movie-navigator"
+            onClick={() => handleSlide("dec")}
+            style={{ marginLeft: "-4rem" }}
+          >
+            <img
+              className="movie-navigator__icon"
+              src={iconChevronLeft}
+              alt=""
+            />
+          </button>
+          <button
+            className="movie-navigator"
+            onClick={() => handleSlide("inc")}
+            style={{ marginRight: "-4rem" }}
+          >
+            <img
+              className="movie-navigator__icon"
+              src={iconChevronRight}
+              alt=""
+            />
+          </button>
         </div>
       </div>
     </section>
