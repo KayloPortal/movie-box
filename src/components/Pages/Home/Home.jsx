@@ -19,6 +19,7 @@ import { useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
 import Slider from "../../Global/Slider/Slider";
 import Bar from "../../Global/Slider/Bar";
+import SectionContainer from "../../Layout/SectionContainer";
 
 function Home() {
   return (
@@ -216,20 +217,14 @@ const featuredMovies = [
 
 function FeaturedMovies() {
   return (
-    <section className="movies">
-      <div className="container-full movies-container">
-        <Bar heading={"Featured Movise"} URL={""} />
-        <Slider
-          data={featuredMovies}
-          styleGap={5}
-          styleColumn={15.625}
-        >
-          {featuredMovies.map((data) => (
-            <MovieCard key={data.id} movie={data} customClass={""} />
-          ))}
-        </Slider>
-      </div>
-    </section>
+    <SectionContainer customClass={"movies"}>
+      <Bar heading={"Featured Movise"} URL={""} />
+      <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
+        {featuredMovies.map((data) => (
+          <MovieCard key={data.id} movie={data} customClass={""} />
+        ))}
+      </Slider>
+    </SectionContainer>
   );
 }
 
