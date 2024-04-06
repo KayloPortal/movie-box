@@ -37,7 +37,7 @@ function MovieCard({ movie, customClass }) {
       </p>
       <div className="movie-card-bar">
         <div
-          className="movie-card-bar__series | fw-bold"
+          className="movie-card-bar__series | fw-bold gray-900"
           style={{ opacity: movie["tv-series"] === "yes" ? 1 : 0 }}
         >
           <p>{movie["tv-series"] === "yes" ? "TV SERIES" : ""}</p>
