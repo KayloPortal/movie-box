@@ -1,40 +1,39 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Slider.css";
-// import sprites from "/icons/__all-sprites.svg";
 import iconChevronLeft from "/icons/chevron-left.svg";
 import iconChevronRight from "/icons/chevron-right.svg";
 
-function Slider({ data, Holder, styleGap, styleColumn, children }) {
+function Slider({ data, styleGap, styleColumn, children }) {
   const [sliderIndex, setSliderIndex] = useState(0);
+  const sliderCountainer = useRef();
 
   const handleSlide = (method) => {
     if (method !== "inc" && method !== "dec")
       throw "handleSlide method argument must be 'inc' or 'dec'";
-    setSliderIndex((prevIndex) => {
-      if (
-        (prevIndex == 0 && method == "dec") ||
-        (prevIndex == data.length - 4 && method == "inc")
-      )
-        return prevIndex;
-      return prevIndex + (method === "inc" ? 1 : -1);
-    });
+    if (
+      (sliderIndex === 0 && method === "dec") ||
+      (sliderIndex === Math.floor(data.length - (window.innerWidth - 24) / ((styleColumn + styleGap) * 16) + 1) && method === "inc")
+    )
+      return;
+    setSliderIndex((prev) => (method === "inc" ? prev + 1 : prev - 1));
   };
+
+  useEffect(() => {
+    const element = document.querySelector(".movie-slider");
+    element.scrollTo({
+      top: 0,
+      left:
+        sliderIndex *
+        (styleColumn + styleGap) *
+        16,
+      behavior: "smooth",
+    });
+  }, [sliderIndex, styleColumn, styleGap])
 
   return (
     <>
-      <div className="movie-slider">
-        <Holder movie={data[0]} customClass="movie-card-holder" />
-        <div
-          className="movie-cards"
-          style={{
-            transform: `translateX(${
-              sliderIndex * (-1 * (styleColumn + styleGap))
-              // (sliderIndex === data.length - 4 ? 5 : 0)
-            }rem)`,
-          }}
-        >
-          {children}
-        </div>
+      <div className="movie-slider" ref={sliderCountainer}>
+        {children}
       </div>
       <div className="movie-navigators">
         <button

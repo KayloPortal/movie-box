@@ -6,7 +6,9 @@ import spritesAll from "/icons/__all-sprites.svg";
 function MovieCard({ movie, customClass }) {
   return (
     <div className={`movie-card | fs-100 gray-900 ${customClass}`}>
-      <img className="movie-card__poster" src={movie["image-url"]} alt="" />
+      <div className="movie-card__poster-container">
+        <img className="movie-card__poster" src={movie["image-url"]} alt="" />
+      </div>
       <p className="movie-card__date | gray-400 fw-bold">
         {movie.country ? movie.country + ", " : ""}
         {movie.year} - Current

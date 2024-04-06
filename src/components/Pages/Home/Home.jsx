@@ -248,7 +248,6 @@ function FeaturedMovies() {
           data={featuredMovies}
           styleGap={5}
           styleColumn={15.625}
-          Holder={MovieCard}
         >
           {featuredMovies.map((data) => (
             <MovieCard key={data.id} movie={data} customClass={""} />
