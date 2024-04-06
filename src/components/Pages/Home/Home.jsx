@@ -25,7 +25,30 @@ function Home() {
   return (
     <>
       <Hero />
-      <FeaturedMovies />
+      <SectionContainer customClass={"movies"} full={true}>
+        <Bar heading={"Featured Movise"} URL={""} />
+        <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
+          {featuredMovies.map((data) => (
+            <MovieCard key={data.id} movie={data} customClass={""} />
+          ))}
+        </Slider>
+      </SectionContainer>
+      <SectionContainer customClass={"movies"}>
+        <Bar heading={"Featured Movise"} URL={""} />
+        <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
+          {featuredMovies.map((data) => (
+            <MovieCard key={data.id} movie={data} customClass={""} />
+          ))}
+        </Slider>
+      </SectionContainer>
+      <SectionContainer customClass={"movies"}>
+        <Bar heading={"Featured Movise"} URL={""} />
+        <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
+          {featuredMovies.map((data) => (
+            <MovieCard key={data.id} movie={data} customClass={""} />
+          ))}
+        </Slider>
+      </SectionContainer>
     </>
   );
 }
@@ -214,18 +237,5 @@ const featuredMovies = [
     current: "no",
   },
 ];
-
-function FeaturedMovies() {
-  return (
-    <SectionContainer customClass={"movies"}>
-      <Bar heading={"Featured Movise"} URL={""} />
-      <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
-        {featuredMovies.map((data) => (
-          <MovieCard key={data.id} movie={data} customClass={""} />
-        ))}
-      </Slider>
-    </SectionContainer>
-  );
-}
 
 export default Home;

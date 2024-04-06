@@ -1,9 +1,9 @@
 
 
-function SectionContainer({customClass, children}) {
+function SectionContainer({customClass, children, full}) {
   return (
     <section className={customClass}>
-      <div className={`container ${customClass}-container`}>{children}</div>
+      <div className={`container${full ? "-full" : ""} ${customClass}-container`}>{children}</div>
     </section>
   )
 }
