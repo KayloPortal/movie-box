@@ -3,8 +3,8 @@ import "./Home.css";
 import iconIMDB from "/icons/imdb.svg";
 import iconTomato from "/icons/tomato.svg";
 import iconPlaySolid from "/icons/play-solid.svg";
-import iconChevronRight from "/icons/chevron-right.svg";
-import iconChevronLeft from "/icons/chevron-left.svg";
+// import iconChevronRight from "/icons/chevron-right.svg";
+// import iconChevronLeft from "/icons/chevron-left.svg";
 
 import imageJohnWick3 from "/images/banner-johnwick3.jpg";
 import imageDankirk from "/images/banner-dankirk.jpg";
@@ -18,6 +18,7 @@ import posterDankirk from "/images/poster-dankirk.jpg";
 import sprites from "/icons/__all-sprites.svg";
 import { useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
+import Slider from "../../Global/Slider/Slider";
 
 function Home() {
   return (
@@ -214,20 +215,20 @@ const featuredMovies = [
 ];
 
 function FeaturedMovies() {
-  const [sliderIndex, setSliderIndex] = useState(0);
+  // const [sliderIndex, setSliderIndex] = useState(0);
 
-  const handleSlide = (method) => {
-    if (method !== "inc" && method !== "dec")
-      throw "handleSlide method argument must be 'inc' or 'dec'";
-    setSliderIndex((prevIndex) => {
-      if (
-        (prevIndex == 0 && method == "dec") ||
-        (prevIndex == featuredMovies.length - 4 && method == "inc")
-      )
-        return prevIndex;
-      return prevIndex + (method === "inc" ? 1 : -1);
-    });
-  };
+  // const handleSlide = (method) => {
+  //   if (method !== "inc" && method !== "dec")
+  //     throw "handleSlide method argument must be 'inc' or 'dec'";
+  //   setSliderIndex((prevIndex) => {
+  //     if (
+  //       (prevIndex == 0 && method == "dec") ||
+  //       (prevIndex == featuredMovies.length - 4 && method == "inc")
+  //     )
+  //       return prevIndex;
+  //     return prevIndex + (method === "inc" ? 1 : -1);
+  //   });
+  // };
 
   return (
     <section className="movies">
@@ -243,7 +244,17 @@ function FeaturedMovies() {
             </svg>
           </a>
         </div>
-        <div className="movie-slider">
+        <Slider
+          data={featuredMovies}
+          styleGap={5}
+          styleColumn={15.625}
+          Holder={MovieCard}
+        >
+          {featuredMovies.map((data) => (
+            <MovieCard key={data.id} movie={data} customClass={""} />
+          ))}
+        </Slider>
+        {/* <div className="movie-slider">
           <MovieCard
             movie={featuredMovies[0]}
             customClass="movie-card-holder"
@@ -285,7 +296,7 @@ function FeaturedMovies() {
               alt=""
             />
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

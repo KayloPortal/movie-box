@@ -19,3 +19,8 @@
   opacity: 1;
   width: 100%;
 }
+
+.slider-holder {
+  opacity: 0;
+  width: 15.625rem;
+}
