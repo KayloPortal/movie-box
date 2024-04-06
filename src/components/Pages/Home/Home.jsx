@@ -15,10 +15,10 @@ import imageSpiderman from "/images/poster-spiderman.jpg";
 import imageStrangerthings from "/images/poster-strangerthings.jpg";
 import posterDankirk from "/images/poster-dankirk.jpg";
 
-import sprites from "/icons/__all-sprites.svg";
 import { useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
 import Slider from "../../Global/Slider/Slider";
+import Bar from "../../Global/Slider/Bar";
 
 function Home() {
   return (
@@ -218,17 +218,7 @@ function FeaturedMovies() {
   return (
     <section className="movies">
       <div className="container-full movies-container">
-        <div className="bar">
-          <h2 className="bar__heading | fw-bold fs-650">Featured Movie</h2>
-          <a className="bar__link | link-underline" href="">
-            <span className="bar__link-text | fs-400 fl-height-600 rose-700">
-              See more
-            </span>{" "}
-            <svg className="bar__link-icon">
-              <use xlinkHref={sprites + "#chevron-right"}></use>
-            </svg>
-          </a>
-        </div>
+        <Bar heading={"Featured Movise"} URL={""} />
         <Slider
           data={featuredMovies}
           styleGap={5}
