@@ -137,13 +137,11 @@
   grid-auto-columns: 15.625rem;
   gap: 5rem;
   transition: all ease .25s;
-  mouse-wheel:horizontal;
 }
 
 .movie-card {
   transition: transform ease .15s;
   cursor: pointer;
-  
 }
 
 .movie-card__poster-container {
@@ -156,32 +154,10 @@
 
 .movie-card:hover .movie-card__poster {
   transform: scale(1.1);
-  /* overflow: hidden; */
-  /* zoom */
 }
 
 .movie-slider::-webkit-scrollbar {
   display: none;
-}
-
-.movie-cards {
-  position: absolute;
-  width: max-content;
-  display: grid;
-  top: 0;
-  grid-auto-flow: column;
-  grid-auto-columns: 15.625rem;
-  gap: 5rem;
-  transition: all ease .25s;
-}
-
-.movie-card-holder {
-  opacity: 0;
-  width: 15.625rem;
-}
-
-.movie-card-holder .movie-card__poster {
-  width: 15.62rem;
 }
 
 .movie-navigators {
