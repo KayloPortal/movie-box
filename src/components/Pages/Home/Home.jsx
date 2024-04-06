@@ -215,21 +215,6 @@ const featuredMovies = [
 ];
 
 function FeaturedMovies() {
-  // const [sliderIndex, setSliderIndex] = useState(0);
-
-  // const handleSlide = (method) => {
-  //   if (method !== "inc" && method !== "dec")
-  //     throw "handleSlide method argument must be 'inc' or 'dec'";
-  //   setSliderIndex((prevIndex) => {
-  //     if (
-  //       (prevIndex == 0 && method == "dec") ||
-  //       (prevIndex == featuredMovies.length - 4 && method == "inc")
-  //     )
-  //       return prevIndex;
-  //     return prevIndex + (method === "inc" ? 1 : -1);
-  //   });
-  // };
-
   return (
     <section className="movies">
       <div className="container-full movies-container">
@@ -253,49 +238,6 @@ function FeaturedMovies() {
             <MovieCard key={data.id} movie={data} customClass={""} />
           ))}
         </Slider>
-        {/* <div className="movie-slider">
-          <MovieCard
-            movie={featuredMovies[0]}
-            customClass="movie-card-holder"
-          />
-          <div
-            className="movie-cards"
-            style={{
-              transform: `translateX(${
-                sliderIndex * (-1 * (15.625 + 5))
-                // (sliderIndex === featuredMovies.length - 4 ? 5 : 0)
-              }rem)`,
-            }}
-          >
-            {featuredMovies.map((data) => (
-              <MovieCard key={data.id} movie={data} customClass={""} />
-            ))}
-          </div>
-        </div>
-        <div className="movie-navigators">
-          <button
-            className="movie-navigator"
-            onClick={() => handleSlide("dec")}
-            style={{ marginLeft: "-4rem" }}
-          >
-            <img
-              className="movie-navigator__icon"
-              src={iconChevronLeft}
-              alt=""
-            />
-          </button>
-          <button
-            className="movie-navigator"
-            onClick={() => handleSlide("inc")}
-            style={{ marginRight: "-4rem" }}
-          >
-            <img
-              className="movie-navigator__icon"
-              src={iconChevronRight}
-              alt=""
-            />
-          </button>
-        </div> */}
       </div>
     </section>
   );
