@@ -33,7 +33,7 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer customClass={"movies"}>
+      <SectionContainer customClass={"movies"} full={true}>
         <Bar heading={"Featured Movise"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
           {featuredMovies.map((data) => (
@@ -41,7 +41,7 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer customClass={"movies"}>
+      <SectionContainer customClass={"movies"} full={true}>
         <Bar heading={"Featured Movise"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
           {featuredMovies.map((data) => (
