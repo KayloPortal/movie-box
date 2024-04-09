@@ -32,7 +32,7 @@ function Slider({ data, styleGap, styleColumn, children }) {
 
   return (
     <>
-      <div className="slider" ref={sliderCountainer}>
+      <div className="slider" style={{"--column-size": `${styleColumn}rem`, "--gap-value": `${styleGap}rem`}} ref={sliderCountainer}>
         {children}
       </div>
       <div className="slider-navigators">
