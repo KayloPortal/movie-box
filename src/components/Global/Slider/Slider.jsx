@@ -19,7 +19,7 @@ function Slider({ data, styleGap, styleColumn, children }) {
   };
 
   useEffect(() => {
-    const element = document.querySelector(".movie-slider");
+    const element = document.querySelector(".slider");
     element.scrollTo({
       top: 0,
       left:
@@ -32,24 +32,24 @@ function Slider({ data, styleGap, styleColumn, children }) {
 
   return (
     <>
-      <div className="movie-slider" ref={sliderCountainer}>
+      <div className="slider" ref={sliderCountainer}>
         {children}
       </div>
-      <div className="movie-navigators">
+      <div className="slider-navigators">
         <button
-          className="movie-navigator"
+          className="slider-navigator"
           onClick={() => handleSlide("dec")}
           style={{ marginLeft: "-4rem" }}
         >
-          <img className="movie-navigator__icon" src={iconChevronLeft} alt="" />
+          <img className="slider-navigator__icon" src={iconChevronLeft} alt="" />
         </button>
         <button
-          className="movie-navigator"
+          className="slider-navigator"
           onClick={() => handleSlide("inc")}
           style={{ marginRight: "-4rem" }}
         >
           <img
-            className="movie-navigator__icon"
+            className="slider-navigator__icon"
             src={iconChevronRight}
             alt=""
           />

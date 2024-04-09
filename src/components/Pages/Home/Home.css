@@ -108,17 +108,6 @@
   position: relative;
 }
 
-.movie-slider {
-  position: relative;
-  overflow-x: scroll;
-  padding-bottom: 4.375rem;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 15.625rem;
-  gap: 5rem;
-  transition: all ease .25s;
-}
-
 .movie-card {
   transition: transform ease .15s;
   cursor: pointer;
@@ -138,35 +127,4 @@
 
 .movie-slider::-webkit-scrollbar {
   display: none;
-}
-
-.movie-navigators {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  top: 43%;
-  cursor: pointer;
-  overflow: visible ;
-}
-
-.movie-navigator {
-  min-width: 3rem;
-  min-height: 3rem;
-  box-sizing: content-box;
-  aspect-ratio: 1;
-  z-index: 3;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  border-radius: .375rem;
-}
-
-.movie-navigator, .movie-navigator__icon {
-  transition: all ease .25s;
-}
-
-.movie-navigator:hover .movie-navigator__icon {
-  transform: scale(1.5);
 }

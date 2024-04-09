@@ -13,6 +13,8 @@ import imageFury from "/images/banner-fury.jpg";
 import imageBatman from "/images/poster-batman.jpg";
 import imageSpiderman from "/images/poster-spiderman.jpg";
 import imageStrangerthings from "/images/poster-strangerthings.jpg";
+import imageDune from "/images/poster-dune.jpg";
+import imageNoTimeToDie from "/images/poster-notimetodie.jpg"
 import posterDankirk from "/images/poster-dankirk.jpg";
 
 import { useState } from "react";
@@ -26,7 +28,7 @@ function Home() {
     <>
       <Hero />
       <SectionContainer customClass={"movies"} full={true}>
-        <Bar heading={"Featured Movise"} URL={""} />
+        <Bar heading={"Featured Movies"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
           {featuredMovies.map((data) => (
             <MovieCard key={data.id} movie={data} customClass={""} />
@@ -34,15 +36,15 @@ function Home() {
         </Slider>
       </SectionContainer>
       <SectionContainer customClass={"movies"} full={true}>
-        <Bar heading={"Featured Movise"} URL={""} />
+        <Bar heading={"New Arrival"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
-          {featuredMovies.map((data) => (
+          {newArrival.map((data) => (
             <MovieCard key={data.id} movie={data} customClass={""} />
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer customClass={"movies"} full={true}>
-        <Bar heading={"Featured Movise"} URL={""} />
+      <SectionContainer customClass={"hero-videos"} full={true}>
+        <Bar heading={"Exclusive Videos"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
           {featuredMovies.map((data) => (
             <MovieCard key={data.id} movie={data} customClass={""} />
@@ -237,5 +239,98 @@ const featuredMovies = [
     current: "no",
   },
 ];
+
+const newArrival = [
+  {
+    title: "Dune",
+    "image-url": imageDune,
+    "rate-IMDb": "8.4",
+    "rate-Tomato": "75",
+    id: "yf783dsad4gd8634gd",
+    year: "2021",
+    country: "USA",
+    "tv-series": "yes",
+    genres: ["Action", "Adventure", "Drama"],
+    current: "yes",
+  },
+  {
+    title: "No Time To Die",
+    "image-url": imageNoTimeToDie,
+    "rate-IMDb": "7.6",
+    "rate-Tomato": "68",
+    id: "yf7834sdasdad8634gd",
+    year: "2021",
+    country: "USA",
+    "tv-series": "no",
+    genres: ["Action", "Adventure", "Thriller"],
+    current: "no",
+  },
+  {
+    title: "Spider-Man : Into The Spider Verse",
+    "image-url": imageSpiderman,
+    "rate-IMDb": "8.4",
+    "rate-Tomato": "87",
+    id: "yf7834gdsadd8634gd",
+    year: "2018",
+    country: "USA",
+    "tv-series": "no",
+    genres: ["Animation", "Action", "Adventure"],
+    current: "no",
+  },
+  {
+    title: "Dankirk",
+    "image-url": posterDankirk,
+    "rate-IMDb": "7.8",
+    "rate-Tomato": "94",
+    id: "yf7834gdsdsdadd8634gd",
+    year: "2017",
+    country: "USA",
+    "tv-series": "no",
+    genres: ["Animation", "Drama", "History"],
+    current: "no",
+  },
+  {
+    title: "Dankirk",
+    "image-url": posterDankirk,
+    "rate-IMDb": "7.8",
+    "rate-Tomato": "94",
+    id: "yf7834gdddsdsdadd8634gd",
+    year: "2017",
+    country: "USA",
+    "tv-series": "no",
+    genres: ["Animation", "Drama", "History"],
+    current: "no",
+  },
+  {
+    title: "Dankirk",
+    "image-url": posterDankirk,
+    "rate-IMDb": "7.8",
+    "rate-Tomato": "94",
+    id: "yf7834gdddsdsdadsadd8634gd",
+    year: "2017",
+    country: "USA",
+    "tv-series": "no",
+    genres: ["Animation", "Drama", "History"],
+    current: "no",
+  },
+];
+
+const videosData = [
+  {
+    title: "Lamb (2021) Trailer",
+    videoURL: "",
+    thumbnail: ""
+  },
+  {
+    title: "The Suicide Squad : John Cena Interview",
+    videoURL: "",
+    thumbnail: ""
+  },
+  {
+    title: "Lamb (2021) Trailer",
+    videoURL: "",
+    thumbnail: ""
+  }
+]
 
 export default Home;
