@@ -64,7 +64,7 @@ function Home() {
         full={true}
       >
         <Bar heading={"Exclusive Videos"} URL={""} />
-        <Slider data={featuredMovies} styleGap={3} styleColumn={28.125}>
+        <Slider data={videosData} styleGap={3} styleColumn={28.125}>
           {videosData.map((video) => (
             <VideoCard key={video.id} video={video} />
           ))}
