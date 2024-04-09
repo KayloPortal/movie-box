@@ -28,7 +28,6 @@ function MovieCard({ movie, customClass }) {
         {(function () {
           let out = "";
           for (let i = 0; i < movie.genres.length; i++) {
-            console.log(movie.genres[i]);
             out +=
               movie.genres[i] + (i === movie.genres.length - 1 ? "" : ", ");
           }
