@@ -39,3 +39,7 @@
 .slider-navigator:hover .slider-navigator__icon {
   transform: scale(1.5);
 }
+
+.slider::-webkit-scrollbar {
+  display: none;
+}

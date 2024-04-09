@@ -14,10 +14,17 @@ import imageBatman from "/images/poster-batman.jpg";
 import imageSpiderman from "/images/poster-spiderman.jpg";
 import imageStrangerthings from "/images/poster-strangerthings.jpg";
 import imageDune from "/images/poster-dune.jpg";
-import imageNoTimeToDie from "/images/poster-notimetodie.jpg"
+import imageNoTimeToDie from "/images/poster-notimetodie.jpg";
 import posterDankirk from "/images/poster-dankirk.jpg";
+import iconPlayOutline from "/icons/play-outline.svg";
 
-import { useState } from "react";
+import thumbnail1 from "/images/thumbnail-1.jpg";
+import thumbnail2 from "/images/thumbnail-2.jpg";
+import thumbnail3 from "/images/thumbnail-3.jpg";
+
+import videoTest from "/videos/test.mp4";
+
+import { useRef, useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
 import Slider from "../../Global/Slider/Slider";
 import Bar from "../../Global/Slider/Bar";
@@ -27,7 +34,7 @@ function Home() {
   return (
     <>
       <Hero />
-      <SectionContainer customClass={"movies"} full={true}>
+      <SectionContainer customClass={"slider-section movies"} containerClass={"movies-container"} full={true}>
         <Bar heading={"Featured Movies"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
           {featuredMovies.map((data) => (
@@ -35,7 +42,7 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer customClass={"movies"} full={true}>
+      <SectionContainer customClass={"slider-section movies"} containerClass={"movies-container"} full={true}>
         <Bar heading={"New Arrival"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
           {newArrival.map((data) => (
@@ -43,11 +50,11 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer customClass={"hero-videos"} full={true}>
+      <SectionContainer customClass={"slider-section hero-videos"} containerClass={"hero-videos-container"} full={true}>
         <Bar heading={"Exclusive Videos"} URL={""} />
-        <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
-          {featuredMovies.map((data) => (
-            <MovieCard key={data.id} movie={data} customClass={""} />
+        <Slider data={featuredMovies} styleGap={3} styleColumn={28.125}>
+          {videosData.map((video) => (
+            <VideoCard key={video.id} video={video} />
           ))}
         </Slider>
       </SectionContainer>
@@ -318,19 +325,62 @@ const newArrival = [
 const videosData = [
   {
     title: "Lamb (2021) Trailer",
-    videoURL: "",
-    thumbnail: ""
+    videoURL: videoTest,
+    thumbnail: thumbnail1,
+    id: "848465",
   },
   {
     title: "The Suicide Squad : John Cena Interview",
-    videoURL: "",
-    thumbnail: ""
+    videoURL: videoTest,
+    thumbnail: thumbnail2,
+    id: "3511614",
   },
   {
     title: "Lamb (2021) Trailer",
-    videoURL: "",
-    thumbnail: ""
-  }
-]
+    videoURL: videoTest,
+    thumbnail: thumbnail3,
+    id: "4848",
+  },
+  {
+    title: "Lamb (2021) Trailer",
+    videoURL: videoTest,
+    thumbnail: thumbnail1,
+    id: "4684841",
+  },
+];
+
+function VideoCard({ video }) {
+  const videoElement = useRef();
+  const [isPlaying, setIsPLaying] = useState(false);
+
+  const handleFirstPlay = () => {
+    if (!isPlaying) {
+      videoElement.current.play();
+      setIsPLaying(true);
+    }
+  };
+
+  return (
+    <div className={`video-card ${isPlaying ? "video-card--playing" : ""}`}>
+      <div className="video-card__video-container">
+        <video
+          className="video-card__video"
+          src={video.videoURL}
+          ref={videoElement}
+          controls
+          onClick={handleFirstPlay}
+        ></video>
+        <img src={video.thumbnail} className="video-card__thumbnail" />
+        <div className="video-card__dark-gradient"></div>
+        <button className="video-card__play-button">
+          <img src={iconPlayOutline} alt="play" onClick={handleFirstPlay} />
+        </button>
+      </div>
+      <h3 className="video-card__title | fs-400 fw-bold gray-900">
+        {video.title}
+      </h3>
+    </div>
+  );
+}
 
 export default Home;
