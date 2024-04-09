@@ -34,7 +34,11 @@ function Home() {
   return (
     <>
       <Hero />
-      <SectionContainer customClass={"slider-section movies"} containerClass={"movies-container"} full={true}>
+      <SectionContainer
+        customClass={"slider-section movies"}
+        containerClass={"movies-container"}
+        full={true}
+      >
         <Bar heading={"Featured Movies"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
           {featuredMovies.map((data) => (
@@ -42,7 +46,11 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer customClass={"slider-section movies"} containerClass={"movies-container"} full={true}>
+      <SectionContainer
+        customClass={"slider-section movies"}
+        containerClass={"movies-container"}
+        full={true}
+      >
         <Bar heading={"New Arrival"} URL={""} />
         <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
           {newArrival.map((data) => (
@@ -50,7 +58,11 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer customClass={"slider-section hero-videos"} containerClass={"hero-videos-container"} full={true}>
+      <SectionContainer
+        customClass={"slider-section hero-videos"}
+        containerClass={"hero-videos-container"}
+        full={true}
+      >
         <Bar heading={"Exclusive Videos"} URL={""} />
         <Slider data={featuredMovies} styleGap={3} styleColumn={28.125}>
           {videosData.map((video) => (
@@ -368,10 +380,12 @@ function VideoCard({ video }) {
           src={video.videoURL}
           ref={videoElement}
           controls
-          onClick={handleFirstPlay}
         ></video>
         <img src={video.thumbnail} className="video-card__thumbnail" />
-        <div className="video-card__dark-gradient"></div>
+        <div
+          className="video-card__dark-gradient"
+          onClick={handleFirstPlay}
+        ></div>
         <button className="video-card__play-button">
           <img src={iconPlayOutline} alt="play" onClick={handleFirstPlay} />
         </button>
