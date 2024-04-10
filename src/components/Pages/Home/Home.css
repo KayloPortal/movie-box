@@ -42,7 +42,7 @@
 .hero-navigator__line {
   display: flex;
   height: 0.1875rem;
-  width: 1.25rem;
+  width: 0;
   background-color: var(--neutral-100);
   border-radius: 0.375rem;
   transition: opacity ease-in-out 0.25s;

@@ -29,11 +29,14 @@ import castPoster4 from "/images/casts-poster-4.jpg";
 
 import videoTest from "/videos/test.mp4";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
 import Slider from "../../Global/Slider/Slider";
 import Bar from "../../Global/Slider/Bar";
 import SectionContainer from "../../Layout/SectionContainer";
+import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function Home() {
   return (
@@ -80,8 +83,14 @@ function Home() {
         <Slider data={castsData} styleColumn={15.625} styleGap={5}>
           {castsData.map((data) => (
             <div key={data.id} className="cast-card">
-              <img className="cast-card__image" src={data.imageURL} alt={`link to ${data.title}'s page`} />
-              <h3 className="cast-card__title fs-400 fw-bold gray-900">{data.title}</h3>
+              <img
+                className="cast-card__image"
+                src={data.imageURL}
+                alt={`link to ${data.title}'s page`}
+              />
+              <h3 className="cast-card__title fs-400 fw-bold gray-900">
+                {data.title}
+              </h3>
             </div>
           ))}
         </Slider>
@@ -92,6 +101,23 @@ function Home() {
 
 function Hero() {
   const [index, setIndex] = useState(0);
+  const sliderSeconds = useRef(0);
+  const slideShowSecond = 4000;
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      console.log(sliderSeconds.current);
+      if (sliderSeconds.current == slideShowSecond) {
+        sliderSeconds.current = 0;
+        setIndex((prevIndex) =>
+          prevIndex !== heroMovies.length - 1 ? prevIndex + 1 : 0
+        );
+      } else {
+        sliderSeconds.current += 500;
+      }
+    }, 500);
+    return () => clearInterval(intervalId);
+  }, []);
 
   function handleIndex(newIndex) {
     setIndex(newIndex);
@@ -122,7 +148,10 @@ function Hero() {
               } fw-bold fs-${index === itemIndex ? "3" : "1"}00 fl-height-200`}
             >
               <span
-                style={{ opacity: index == itemIndex ? 1 : 0 }}
+                style={{
+                  opacity: index == itemIndex ? 1 : 0,
+                  width: index == itemIndex ? "1.25rem" : "0",
+                }}
                 className="hero-navigator__line"
               ></span>
               {itemIndex + 1}
@@ -161,10 +190,10 @@ function HeroSlide({ movie }) {
         <p className="hero-slide__desc | fs-200 fl-height-400 fw-medium">
           {movie.description}
         </p>
-        <button className="hero-slide__cta | fs-200 fl-height-600 fw-bold">
+        <Link to="" className="hero-slide__cta | fs-200 fl-height-600 fw-bold">
           {" "}
           <img src={iconPlaySolid} alt="play icon" /> WATCH TRAILER
-        </button>
+        </Link>
       </div>
     </div>
   );
@@ -417,32 +446,32 @@ const castsData = [
   {
     title: "Keanu Reeves",
     imageURL: castPoster1,
-    id: "18246"
+    id: "18246",
   },
   {
     title: "Ryan Reynolds",
     imageURL: castPoster2,
-    id: "18548"
+    id: "18548",
   },
   {
     title: "Timothée Chalamet",
     imageURL: castPoster3,
-    id: "11546"
+    id: "11546",
   },
   {
     title: "Chloë Grace Moretz",
     imageURL: castPoster4,
-    id: "10546"
+    id: "10546",
   },
   {
     title: "Chloë Grace Moretz",
     imageURL: castPoster4,
-    id: "10sd546"
+    id: "10sd546",
   },
   {
     title: "Chloë Grace Moretz",
     imageURL: castPoster4,
-    id: "105asda46"
+    id: "105asda46",
   },
 ];
 
