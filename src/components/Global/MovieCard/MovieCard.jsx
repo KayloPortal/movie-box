@@ -11,7 +11,7 @@ function MovieCard({ movie, customClass }) {
       </div>
       <p className="movie-card__date | gray-400 fw-bold">
         {movie.country ? movie.country + ", " : ""}
-        {movie.year} - Current
+        {movie.year}{movie.current === "yes" ? " - Current" : ""}
       </p>
       <h3 className="movie-card__title | fs-400 fw-bold">{movie.title}</h3>
       <p className="movie-card__rates | fl-height-100">
