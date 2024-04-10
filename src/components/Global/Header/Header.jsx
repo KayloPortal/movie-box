@@ -14,7 +14,7 @@ import { useTokenContext } from "../../../contexts/tokenContext";
 function Header({ displaySearch, bgTransparent }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
-  const {hasLoggedIn} = useTokenContext()
+  const { hasLoggedIn } = useTokenContext();
 
   function handleQuery(newData) {
     setQuery(newData);
@@ -67,7 +67,10 @@ function Header({ displaySearch, bgTransparent }) {
           false
         )}
         <div className="hello \ ">
-          <NavLink className="hello__link | fw-bold link-underline" to={`/${hasLoggedIn? "dashboard" : "signup"}`}>
+          <NavLink
+            className="hello__link | fw-bold link-underline"
+            to={`/${hasLoggedIn ? "dashboard" : "signup"}`}
+          >
             {hasLoggedIn ? "Dashboard" : "Sign up"}
           </NavLink>
           <button className="menu-button" onClick={toggleOpen}>
@@ -113,6 +116,16 @@ function HeaderSearch({ query, handleQuery, customClass, placeholder }) {
 }
 
 function MenuModal({ toggleOpen, children, hasLoggedIn }) {
+  const linkData = [
+    { name: "Home", href: "/", id: "1" },
+    { name: "Movies", href: "/movies", id: "2" },
+    {
+      name: hasLoggedIn ? "Dashboard" : "Sign up",
+      href: `/${hasLoggedIn ? "dashboard" : "signup"}`,
+      id: "3",
+    },
+  ];
+
   return (
     <>
       <div className="menu-backdrop" onClick={() => toggleOpen(false)}></div>
@@ -128,31 +141,17 @@ function MenuModal({ toggleOpen, children, hasLoggedIn }) {
           {children}
           <nav className="menu-navi">
             <ul className="menu-navi-list" role="list">
-              <li className="menu-navi-list__item">
-                <NavLink
-                  to="/"
-                  className="menu-navi__link | fs-600 fl-height-600 link-underline"
-                >
-                  Home <img src={iconArrowLeft} alt="You're at Home page" />
-                </NavLink>
-              </li>
-              <li className="menu-navi-list__item">
-                <NavLink
-                  to="/movies"
-                  className="menu-navi__link | fs-600 fl-height-600 link-underline"
-                >
-                  Movies <img src={iconArrowLeft} alt="You're at Movies page" />
-                </NavLink>
-              </li>
-              <li className="menu-navi-list__item">
-                <NavLink
-                  to={`/${hasLoggedIn ? "dashboard" : "signup"}`}
-                  className="menu-navi__link | fs-600 fl-height-600 link-underline"
-                >
-                  {hasLoggedIn ? "Dashboard" : "Sign up"}
-                  <img src={iconArrowLeft} alt="You're at Dashboard page" />
-                </NavLink>
-              </li>
+              {linkData.map((link) => (
+                <li key={link.id} className="menu-navi-list__item">
+                  <NavLink
+                    to={link.href}
+                    className="menu-navi__link | fs-600 fl-height-600 link-underline"
+                  >
+                    {link.name}{" "}
+                    <img src={iconArrowLeft} alt="You're at Home page" />
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
