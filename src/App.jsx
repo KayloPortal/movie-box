@@ -6,10 +6,11 @@ import Login from "./components/Pages/Login/Login";
 import SignUp from "./components/Pages/SignUp/SignUp";
 import Header from "./components/Global/Header/Header";
 import Footer from "./components/Global/Footer/Footer";
+import TokenProvider from "./contexts/tokenContext"
 
 function App() {
   return (
-    <>
+    <TokenProvider>
       <Routes>
         <Route path="/" element={<Header displaySearch={true} bgTransparent={true} />} />
         <Route path="/:page" element={<Header displaySearch={false} bgTransparent={false} />} />
@@ -23,7 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Footer />} />
       </Routes>
-    </>
+    </TokenProvider>
   );
 }
 
