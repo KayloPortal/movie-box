@@ -5,6 +5,7 @@ import Movies from "./components/Pages/Movies/Movies";
 import Login from "./components/Pages/Login/Login";
 import SignUp from "./components/Pages/SignUp/SignUp";
 import Header from "./components/Global/Header/Header";
+import Footer from "./components/Global/Footer/Footer";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         <Route path="/movies" element={<Movies />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+      </Routes>
+      <Routes>
+        <Route path="/" element={<Footer />} />
       </Routes>
     </>
   );

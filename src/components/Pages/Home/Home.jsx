@@ -34,7 +34,6 @@ import MovieCard from "../../Global/MovieCard/MovieCard";
 import Slider from "../../Global/Slider/Slider";
 import Bar from "../../Global/Slider/Bar";
 import SectionContainer from "../../Layout/SectionContainer";
-import Footer from "../../Global/Footer/Footer";
 
 function Home() {
   return (
@@ -87,7 +86,6 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <Footer />
     </>
   );
 }
