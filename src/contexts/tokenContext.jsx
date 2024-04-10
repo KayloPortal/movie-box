@@ -24,7 +24,7 @@ function TokenProvider({ children }) {
   };
 
   return (
-    <tokenContext.Provider value={[token, handleToken, hasLoggedIn]}>
+    <tokenContext.Provider value={{token, handleToken, hasLoggedIn}}>
       {children}
     </tokenContext.Provider>
   );
