@@ -4,22 +4,30 @@ import sprites from "/icons/__all-sprites.svg";
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer | fs-400 gray-900 fw-bold">
       <div className="container footer-container">
-        <div className="footer-icons">
-          <svg className="footer-icon">
-            <use xlinkHref={sprites + "#" + "facebook-square"}></use>
-          </svg>
-          <svg className="footer-icon">
-            <use xlinkHref={sprites + "#" + "instagram"}></use>
-          </svg>
-          <svg className="footer-icon">
-            <use xlinkHref={sprites + "#" + "twitter"}></use>
-          </svg>
-          <svg className="footer-icon">
-            <use xlinkHref={sprites + "#" + "youtube"}></use>
-          </svg>
-        </div>
+        <ul role="list" className="footer-icons">
+          <li>
+            <svg className="footer-icon">
+              <use xlinkHref={sprites + "#" + "facebook-square"}></use>
+            </svg>
+          </li>
+          <li>
+            <svg className="footer-icon">
+              <use xlinkHref={sprites + "#" + "instagram"}></use>
+            </svg>
+          </li>
+          <li>
+            <svg className="footer-icon">
+              <use xlinkHref={sprites + "#" + "twitter"}></use>
+            </svg>
+          </li>
+          <li>
+            <svg className="footer-icon">
+              <use xlinkHref={sprites + "#" + "youtube"}></use>
+            </svg>
+          </li>
+        </ul>
         <nav className="footer-navigation">
           <ul className="footer-links" role="list">
             <li>
