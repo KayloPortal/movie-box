@@ -9,6 +9,16 @@
   transition: all ease .25s;
 }
 
+.slider-section {
+  padding-top: 5rem;
+  --page-minimum-padding: 4rem;
+}
+
+.slider-section > .container-full,
+.slider-section > .container {
+  position: relative;
+}
+
 .slider-navigators {
   position: absolute;
   left: 0;

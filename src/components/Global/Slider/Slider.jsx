@@ -25,8 +25,8 @@ function Slider({ data, styleGap, styleColumn, children }) {
   };
 
   useEffect(() => {
-    const element = document.querySelector(".slider");
-    element.scrollTo({
+    // const element = document.querySelector(".slider");
+    sliderCountainer.current.scrollTo({
       top: 0,
       left: sliderIndex * (styleColumn + styleGap) * 16,
       behavior: "smooth",

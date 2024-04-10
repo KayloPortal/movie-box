@@ -99,12 +99,6 @@
 
 /* Featured Styles */
 
-.slider-section {
-  padding-top: 5rem;
-  --page-minimum-padding: 4rem;
-  position: relative;
-}
-
 .movies-container {
   position: relative;
 }
