@@ -75,13 +75,13 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer>
+      <SectionContainer customClass={"slider-section hero-casts"}>
         <Bar heading={"Featured Casts"} URL={""} />
         <Slider data={castsData} styleColumn={15.625} styleGap={5}>
           {castsData.map((data) => (
             <div key={data.id} className="cast-card">
               <img className="cast-card__image" src={data.imageURL} alt={`link to ${data.title}'s page`} />
-              <h3 className="cast-card__title">{data.title}</h3>
+              <h3 className="cast-card__title fs-400 fw-bold gray-900">{data.title}</h3>
             </div>
           ))}
         </Slider>
@@ -433,6 +433,16 @@ const castsData = [
     title: "Chloë Grace Moretz",
     imageURL: castPoster4,
     id: "10546"
+  },
+  {
+    title: "Chloë Grace Moretz",
+    imageURL: castPoster4,
+    id: "10sd546"
+  },
+  {
+    title: "Chloë Grace Moretz",
+    imageURL: castPoster4,
+    id: "105asda46"
   },
 ];
 

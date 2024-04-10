@@ -126,7 +126,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.75rem;
-  z-index: 4  ;
+  z-index: 4;
 }
 
 .video-card__video-container {
@@ -164,4 +164,10 @@
 .video-card--playing .video-card__play-button,
 .video-card--playing .video-card__dark-gradient {
   display: none;
+}
+
+/* cast card */
+
+.cast-card__title {
+  margin-top: 0.75rem;
 }
