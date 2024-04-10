@@ -9,10 +9,12 @@ import iconMenuClose from "/icons/menu-close.svg";
 import iconArrowLeft from "/icons/arrow-left.svg";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTokenContext } from "../../../contexts/tokenContext";
 
 function Header({ displaySearch, bgTransparent }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const {hasLoggedIn} = useTokenContext()
 
   function handleQuery(newData) {
     setQuery(newData);
@@ -65,15 +67,15 @@ function Header({ displaySearch, bgTransparent }) {
           false
         )}
         <div className="hello \ ">
-          <NavLink className="hello__link | fw-bold link-underline" to="/dashboard">
-            Dashboard
+          <NavLink className="hello__link | fw-bold link-underline" to={`/${hasLoggedIn? "dashboard" : "signup"}`}>
+            {hasLoggedIn ? "Dashboard" : "Sign up"}
           </NavLink>
           <button className="menu-button" onClick={toggleOpen}>
             <img className="menu-button__icon" src={iconMenu} alt="open menu" />
           </button>
         </div>
       </div>
-      <MenuModal open={open} toggleOpen={toggleOpen}>
+      <MenuModal open={open} toggleOpen={toggleOpen} hasLoggedIn={hasLoggedIn}>
         <HeaderSearch
           query={query}
           handleQuery={handleQuery}
@@ -110,7 +112,7 @@ function HeaderSearch({ query, handleQuery, customClass, placeholder }) {
   );
 }
 
-function MenuModal({ toggleOpen, children }) {
+function MenuModal({ toggleOpen, children, hasLoggedIn }) {
   return (
     <>
       <div className="menu-backdrop" onClick={() => toggleOpen(false)}></div>
@@ -144,10 +146,10 @@ function MenuModal({ toggleOpen, children }) {
               </li>
               <li className="menu-navi-list__item">
                 <NavLink
-                  to="/dashboard"
+                  to={`/${hasLoggedIn ? "dashboard" : "signup"}`}
                   className="menu-navi__link | fs-600 fl-height-600 link-underline"
                 >
-                  Dashboard{" "}
+                  {hasLoggedIn ? "Dashboard" : "Sign up"}
                   <img src={iconArrowLeft} alt="You're at Dashboard page" />
                 </NavLink>
               </li>
