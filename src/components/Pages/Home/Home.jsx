@@ -35,8 +35,6 @@ import Slider from "../../Global/Slider/Slider";
 import Bar from "../../Global/Slider/Bar";
 import SectionContainer from "../../Layout/SectionContainer";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 function Home() {
   return (
