@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import "./Header.css";
 import iconLogo from "/icons/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import iconMenu from "/icons/menu.svg";
 import iconSearch from "/icons/search.svg";
 import iconMenuClose from "/icons/menu-close.svg";
@@ -91,8 +91,16 @@ function Header({ displaySearch, bgTransparent }) {
 }
 
 function HeaderSearch({ query, handleQuery, customClass, placeholder }) {
+  const navigate = useNavigate()
+
+  function handleSearch(e) {
+    e.preventDefault()
+    navigate(`/movies?query=${query}`)
+    handleQuery("")
+  }
+
   return (
-    <form action="" className={`query-form ${customClass}`}>
+    <form action="" onSubmit={handleSearch} className={`query-form ${customClass}`}>
       <input
         type="text"
         value={query}
