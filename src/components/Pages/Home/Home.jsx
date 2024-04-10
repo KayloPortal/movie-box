@@ -52,7 +52,7 @@ function Home() {
         full={true}
       >
         <Bar heading={"New Arrival"} URL={""} />
-        <Slider data={featuredMovies} styleGap={5} styleColumn={15.625}>
+        <Slider data={newArrival} styleGap={5} styleColumn={15.625}>
           {newArrival.map((data) => (
             <MovieCard key={data.id} movie={data} customClass={""} />
           ))}
