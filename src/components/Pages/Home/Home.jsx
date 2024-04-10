@@ -76,7 +76,7 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
-      <SectionContainer customClass={"slider-section hero-casts"}>
+      <SectionContainer customClass={"slider-section hero-casts"} full={true}>
         <Bar heading={"Featured Casts"} URL={""} />
         <Slider data={castsData} styleColumn={15.625} styleGap={5}>
           {castsData.map((data) => (
