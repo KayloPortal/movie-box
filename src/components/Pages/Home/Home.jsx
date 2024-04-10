@@ -22,6 +22,11 @@ import thumbnail1 from "/images/thumbnail-1.jpg";
 import thumbnail2 from "/images/thumbnail-2.jpg";
 import thumbnail3 from "/images/thumbnail-3.jpg";
 
+import castPoster1 from "/images/casts-poster-1.jpg";
+import castPoster2 from "/images/casts-poster-2.jpg";
+import castPoster3 from "/images/casts-poster-3.jpg";
+import castPoster4 from "/images/casts-poster-4.jpg";
+
 import videoTest from "/videos/test.mp4";
 
 import { useRef, useState } from "react";
@@ -70,39 +75,20 @@ function Home() {
           ))}
         </Slider>
       </SectionContainer>
+      <SectionContainer>
+        <Bar heading={"Featured Casts"} URL={""} />
+        <Slider data={castsData} styleColumn={15.625} styleGap={5}>
+          {castsData.map((data) => (
+            <div key={data.id} className="cast-card">
+              <img className="cast-card__image" src={data.imageURL} alt={`link to ${data.title}'s page`} />
+              <h3 className="cast-card__title">{data.title}</h3>
+            </div>
+          ))}
+        </Slider>
+      </SectionContainer>
     </>
   );
 }
-
-const heroMovies = [
-  {
-    title: "John Wick 3 : Parabellum",
-    description:
-      "John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.",
-    "image-url": imageJohnWick3,
-    "rate-IMDb": "8.6",
-    "rate-Tomato": "97",
-    id: "yf7834gd8634gd",
-  },
-  {
-    title: "Dankirk",
-    description:
-      "Allied soldiers from Belgium, the British Commonwealth and Empire, and France are surrounded by the German Army and evacuated during a fierce battle in World War II.",
-    "image-url": imageDankirk,
-    "rate-IMDb": "7.8",
-    "rate-Tomato": "94",
-    id: "yf7834gdg73486",
-  },
-  {
-    title: "Fury",
-    description:
-      "A grizzled tank commander makes tough decisions as he and his crew fight their way across Germany in April, 1945.",
-    "image-url": imageFury,
-    "rate-IMDb": "7.6",
-    "rate-Tomato": "76",
-    id: "yf7834gdg734gd",
-  },
-];
 
 function Hero() {
   const [index, setIndex] = useState(0);
@@ -183,6 +169,72 @@ function HeroSlide({ movie }) {
     </div>
   );
 }
+
+function VideoCard({ video }) {
+  const videoElement = useRef();
+  const [isPlaying, setIsPLaying] = useState(false);
+
+  const handleFirstPlay = () => {
+    if (!isPlaying) {
+      videoElement.current.play();
+      setIsPLaying(true);
+    }
+  };
+
+  return (
+    <div className={`video-card ${isPlaying ? "video-card--playing" : ""}`}>
+      <div className="video-card__video-container">
+        <video
+          className="video-card__video"
+          src={video.videoURL}
+          ref={videoElement}
+          controls
+        ></video>
+        <img src={video.thumbnail} className="video-card__thumbnail" />
+        <div
+          className="video-card__dark-gradient"
+          onClick={handleFirstPlay}
+        ></div>
+        <button className="video-card__play-button">
+          <img src={iconPlayOutline} alt="play" onClick={handleFirstPlay} />
+        </button>
+      </div>
+      <h3 className="video-card__title | fs-400 fw-bold gray-900">
+        {video.title}
+      </h3>
+    </div>
+  );
+}
+
+const heroMovies = [
+  {
+    title: "John Wick 3 : Parabellum",
+    description:
+      "John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.",
+    "image-url": imageJohnWick3,
+    "rate-IMDb": "8.6",
+    "rate-Tomato": "97",
+    id: "yf7834gd8634gd",
+  },
+  {
+    title: "Dankirk",
+    description:
+      "Allied soldiers from Belgium, the British Commonwealth and Empire, and France are surrounded by the German Army and evacuated during a fierce battle in World War II.",
+    "image-url": imageDankirk,
+    "rate-IMDb": "7.8",
+    "rate-Tomato": "94",
+    id: "yf7834gdg73486",
+  },
+  {
+    title: "Fury",
+    description:
+      "A grizzled tank commander makes tough decisions as he and his crew fight their way across Germany in April, 1945.",
+    "image-url": imageFury,
+    "rate-IMDb": "7.6",
+    "rate-Tomato": "76",
+    id: "yf7834gdg734gd",
+  },
+];
 
 const featuredMovies = [
   {
@@ -361,40 +413,27 @@ const videosData = [
   },
 ];
 
-function VideoCard({ video }) {
-  const videoElement = useRef();
-  const [isPlaying, setIsPLaying] = useState(false);
-
-  const handleFirstPlay = () => {
-    if (!isPlaying) {
-      videoElement.current.play();
-      setIsPLaying(true);
-    }
-  };
-
-  return (
-    <div className={`video-card ${isPlaying ? "video-card--playing" : ""}`}>
-      <div className="video-card__video-container">
-        <video
-          className="video-card__video"
-          src={video.videoURL}
-          ref={videoElement}
-          controls
-        ></video>
-        <img src={video.thumbnail} className="video-card__thumbnail" />
-        <div
-          className="video-card__dark-gradient"
-          onClick={handleFirstPlay}
-        ></div>
-        <button className="video-card__play-button">
-          <img src={iconPlayOutline} alt="play" onClick={handleFirstPlay} />
-        </button>
-      </div>
-      <h3 className="video-card__title | fs-400 fw-bold gray-900">
-        {video.title}
-      </h3>
-    </div>
-  );
-}
+const castsData = [
+  {
+    title: "Keanu Reeves",
+    imageURL: castPoster1,
+    id: "18246"
+  },
+  {
+    title: "Ryan Reynolds",
+    imageURL: castPoster2,
+    id: "18548"
+  },
+  {
+    title: "Timothée Chalamet",
+    imageURL: castPoster3,
+    id: "11546"
+  },
+  {
+    title: "Chloë Grace Moretz",
+    imageURL: castPoster4,
+    id: "10546"
+  },
+];
 
 export default Home;
