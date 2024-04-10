@@ -82,6 +82,7 @@ body {
   width: min(100%, 23.5rem);
   padding-top: 1.375rem;
   height: 100vh;
+  z-index: 8;
   /* gsap animating */
   /* right: calc(-1 * var(--page-layout-width)); */
   /* transform: translateX(30rem); */
