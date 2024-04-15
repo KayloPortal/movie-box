@@ -29,7 +29,7 @@ import castPoster4 from "/images/casts-poster-4.jpg";
 
 import videoTest from "/videos/test.mp4";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import MovieCard from "../../Global/MovieCard/MovieCard";
 import Slider from "../../Global/Slider/Slider";
 import Bar from "../../Global/Slider/Bar";
