@@ -2,9 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import "./Slider.css";
 import iconChevronLeft from "/icons/chevron-left.svg";
 import iconChevronRight from "/icons/chevron-right.svg";
+import useSliderIndex from "../../../hooks/useSliderIndex";
 
 function Slider({ data, styleGap, styleColumn, children }) {
-  const [sliderIndex, setSliderIndex] = useState(0);
+  function calcMaximumSlide(){
+    return Math.floor(
+      data.length -
+        (window.innerWidth - 24) / ((styleColumn + styleGap) * 16) +
+        1
+    )
+  }
+  const [sliderIndex, handleIndex, resetSeconds, setSliderIndex] = useSliderIndex(4000, calcMaximumSlide() + 1)
+  // const [sliderIndex, setSliderIndex] = useState(0);
   const sliderCountainer = useRef();
 
   const handleSlide = (method) => {
@@ -21,6 +30,7 @@ function Slider({ data, styleGap, styleColumn, children }) {
         method === "inc")
     )
       return;
+    resetSeconds()
     setSliderIndex((prev) => (method === "inc" ? prev + 1 : prev - 1));
   };
 
