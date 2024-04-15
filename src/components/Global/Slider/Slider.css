@@ -6,6 +6,7 @@
   grid-auto-columns: var(--column-size);
   gap: var(--gap-value);
   transition: all ease .25s;
+  overflow-y: hidden;
 }
 
 .slider-section {
