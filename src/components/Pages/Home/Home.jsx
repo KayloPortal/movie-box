@@ -99,7 +99,7 @@ function Home() {
 }
 
 function Hero() {
-  const [index, handleIndex] = useSliderIndex(4000, heroMovies.length)
+  const [index, handleIndex] = useSliderIndex(4000, heroMovies.length - 1)
 
   return (
     <section className="hero-section">
