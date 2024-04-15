@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-function useSliderIndex(slideShowSecond, length) {
+function useSliderIndex(slideShowSecond, maximumIndex) {
   const [index, setIndex] = useState(0);
   const sliderSeconds = useRef(0);
   const sliderOrientaion = useRef("increase");
-  function defineOrientation(prevIndex, orientaion, length) {
+  function defineOrientation(prevIndex, orientaion, maximumIndex) {
     return prevIndex === 0 && orientaion === "decrease"
       ? "increase"
-      : prevIndex === length - 1 && orientaion === "increase"
+      : prevIndex === maximumIndex - 1 && orientaion === "increase"
       ? "decrease"
       : orientaion;
   }
@@ -21,7 +21,7 @@ function useSliderIndex(slideShowSecond, length) {
           sliderOrientaion.current = defineOrientation(
             prevIndex,
             orientaion,
-            length
+            maximumIndex
           );
           return prevIndex + (orientaion === "increase" ? 1 : -1);
         });
@@ -30,7 +30,7 @@ function useSliderIndex(slideShowSecond, length) {
       }
     }, 500);
     return () => clearInterval(intervalId);
-  }, [length, slideShowSecond]);
+  }, [maximumIndex, slideShowSecond]);
 
   function resetSeconds() {
     sliderSeconds.current = 0;
@@ -47,7 +47,7 @@ function useSliderIndex(slideShowSecond, length) {
       : setIndex(
           (prev) =>
             prev +
-            (defineOrientation(prev, method, length) === method + "rease" &&
+            (defineOrientation(prev, method, maximumIndex) === method + "rease" &&
               (method === "inc" ? 1 : 0))
         );
     resetSeconds();
