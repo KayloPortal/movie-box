@@ -35,6 +35,7 @@ import Slider from "../../Global/Slider/Slider";
 import Bar from "../../Global/Slider/Bar";
 import SectionContainer from "../../Layout/SectionContainer";
 import { Link } from "react-router-dom";
+import useSliderIndex from "../../../hooks/useSliderIndex";
 
 function Home() {
   return (
@@ -98,36 +99,7 @@ function Home() {
 }
 
 function Hero() {
-  const [index, setIndex] = useState(0);
-  const sliderSeconds = useRef(0);
-  const sliderOrientaion = useRef("increase");
-  const slideShowSecond = 4000;
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (sliderSeconds.current == slideShowSecond) {
-        sliderSeconds.current = 0;
-        setIndex((prevIndex) => {
-          const orientaion = sliderOrientaion.current;
-          sliderOrientaion.current =
-            prevIndex === 0 && orientaion === "decrease"
-              ? "increase"
-              : prevIndex === heroMovies.length - 1 && orientaion === "increase"
-              ? "decrease"
-              : orientaion;
-          return prevIndex + (orientaion === "increase" ? 1 : -1);
-        });
-      } else {
-        sliderSeconds.current += 500;
-      }
-    }, 500);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  function handleIndex(newIndex) {
-    setIndex(newIndex);
-    sliderSeconds.current = 0
-  }
+  const [index, handleIndex] = useSliderIndex(4000, heroMovies.length)
 
   return (
     <section className="hero-section">
